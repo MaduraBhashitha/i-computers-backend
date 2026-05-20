@@ -12,6 +12,10 @@ mongoose.connect(mongoUri).then(
     ()=>{
         console.log("Connected to MongoDB")
     }
+).catch(
+    ()=>{
+        console.log("Error Connecting to MongoDB")
+    }
 )
 
 
