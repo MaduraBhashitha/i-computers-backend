@@ -1,11 +1,12 @@
 import express from 'express'
 import mongoose from 'mongoose'
-
 import userRouter from './routes/userRouter.js'
 import authenticateUser from './middlewares/authenticate.js'
 import productRouter from './routes/productRouter.js'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const mongoUri = "mongodb+srv://admin:1234@cluster0.amjxnj9.mongodb.net/?appName=Cluster0"
+const mongoUri = process.env.MONGO_URI
 
 mongoose.connect(mongoUri).then(
     ()=>{
