@@ -27,7 +27,7 @@ export async function createUser(req,res){
 
     }catch(error){
         console.error("Error creating user:", error);
-        return res.json({ message: "Internal server error" });
+        return res.status(500).json({ message: "Internal server error" });
     }
 
 
@@ -63,7 +63,7 @@ export async function loginUser(req, res) {
             const token = jwt.sign(userInfo , process.env.JWT_SECRET,{expiresIn: "1h"})
         
 
-            res.json({token: token})
+            res.json({token: token , isAdmin: user.isAdmin});
 
 
         }else{
@@ -87,3 +87,4 @@ export function isAdmin(req){
   }
   return true
 }
+

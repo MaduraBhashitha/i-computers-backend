@@ -18,11 +18,13 @@ export async function createProduct(req, res) {
 		
 	} catch (error) {
 		console.error("Error creating product:", error);
-		return res.json({ message: "Internal server error" });
+		return res.status(500).json({ message: "Internal server error" });
 	}
 }
 
+
 export async function getAllProducts(req, res) {
+    console.log("Fetching all products");
 
     try {
         if(isAdmin(req)){
@@ -102,10 +104,10 @@ export async function updateProduct(req, res) {
 }
 
 
+
 export async function getProductById(req, res) {
 
     try{
-
         const productId = req.params.productId
 
         const product = await Product.findOne({ productId : productId })
